@@ -27,7 +27,10 @@ exports.add = async (req, res, next) => {
     res.status(400).send({ message: "Data tidak boleh kosong" });
   }
 
-  const { name, position, points, active } = req.body;
+  const name = req.body.name;
+  const position = req.body.position;
+  const points = Number(req.body.points);
+  const active = req.body.active;
 
   const Employee = new employee({
     name,
