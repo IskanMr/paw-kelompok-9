@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
+
+import { BASE_API_URL } from "../constants";
+
 export default function EditEmployee(props) {
   const [name, setName] = useState("");
   const [position, setPosition] = useState("");
@@ -34,10 +37,7 @@ export default function EditEmployee(props) {
     };
     console.log(employee);
     axios
-      .put(
-        BASE_API_URL + props.match.params.id,
-        employee
-      )
+      .put(BASE_API_URL + props.match.params.id, employee)
       .then(setRedirect(true))
       .catch((error) => {
         console.log(error);

@@ -4,6 +4,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
+import { BASE_API_URL } from "../constants";
+
 const Employee = (props) => (
   <tr>
     <td>{props.employee.name}</td>
@@ -75,11 +77,9 @@ export default function ListEmployee(props) {
   });
 
   const deleteEmployee = (id) => {
-    axios
-      .delete(BASE_API_URL + id)
-      .then((response) => {
-        console.log(response.data);
-      });
+    axios.delete(BASE_API_URL + id).then((response) => {
+      console.log(response.data);
+    });
 
     setEmployee(employee.filter((el) => el._id !== id));
   };
