@@ -64,7 +64,7 @@ export default function ListEmployee(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/employees")
+      .get(BASE_API_URL)
       .then((response) => {
         response.data.sort((a, b) => b.points - a.points);
         setEmployee(response.data);
@@ -76,7 +76,7 @@ export default function ListEmployee(props) {
 
   const deleteEmployee = (id) => {
     axios
-      .delete("http://localhost:3000/api/employees/" + id)
+      .delete(BASE_API_URL + id)
       .then((response) => {
         console.log(response.data);
       });

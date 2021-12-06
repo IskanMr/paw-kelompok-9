@@ -11,7 +11,7 @@ export default function EditEmployee(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/employees/" + props.match.params.id)
+      .get(BASE_API_URL + props.match.params.id)
       .then((response) => {
         console.log(response.data);
         setName(response.data.name);
@@ -35,7 +35,7 @@ export default function EditEmployee(props) {
     console.log(employee);
     axios
       .put(
-        "http://localhost:3000/api/employees/" + props.match.params.id,
+        BASE_API_URL + props.match.params.id,
         employee
       )
       .then(setRedirect(true))

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
+import { BASE_API_URL } from "../constants";
 
 export default function CreateEmployee() {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ export default function CreateEmployee() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/employees")
+      .get(BASE_API_URL)
       .then()
       .catch((error) => {
         console.log(error);
@@ -29,7 +30,7 @@ export default function CreateEmployee() {
     };
     console.log(employee);
     axios
-      .post("http://localhost:3000/api/employees", employee)
+      .post(BASE_API_URL, employee)
       .then(setRedirect(true))
       .catch((error) => {
         console.log("uua");
